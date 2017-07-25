@@ -1,0 +1,19 @@
+<img src="C:\\DEV\\workspace\\DAYS0728\\IMAGE\\sohee.jpg" width=300 height=500
+id=myImg> <!-- name , id 속성을 통하여 이런 것에 이름이나 번호를 부여해서 사용 할 수 있다. -->
+<br>
+<!--  -->
+<button onclick ="next()">next</button>
+<!-- onclick은 모든곳에 다 쓰일 수 있다. -->
+<!-- 정의 하는 부분과 호출하는 부분을 아에 분리하는 것이 좋다. -->
+<script>
+	alert("OK!!");
+</script>
+<script>
+	function next(){
+	alert("클릭");
+	var imgs = ["suji.jpg" , "hippo.jpg" , "spiderman.jpg" ,"IU.jpg","ironman.jpg","choa.jpg" ,"sohee.jpg"];
+	//myImg.src = "C:\\DEV\\workspace\\DAYS0728\\IMAGE\\" + imgs[Math.floor(Math.random()*7)];
+	document.getElementById("myImg").src ="C:\\DEV\\workspace\\DAYS0728\\IMAGE\\"
+	+ imgs[Math.floor(Math.random()* imgs.length)];
+	} 
+</script>

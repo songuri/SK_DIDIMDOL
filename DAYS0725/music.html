@@ -1,0 +1,32 @@
+ <!-- name , id 속성을 통하여 이런 것에 이름이나 번호를 부여해서 사용 할 수 있다. -->
+<!--  -->
+<button onclick ="correct()">correct</button>
+<button onclick ="musicStart()">musicStart</button>
+<input type = text id=answer value ="abc">
+<!-- onclick은 모든곳에 다 쓰일 수 있다. -->
+<!-- 정의 하는 부분과 호출하는 부분을 아에 분리하는 것이 좋다. -->
+<script>
+	alert("OK!!");
+</script>
+<script>
+	var index;
+	var music =["Adam Lambert - Whataya Want From Me","Apink - Remember","EXID - Ah Yeah","IU - Rain Drop @ Bunkamura Orchard Hall 2012","IU - 잠자는 숲속의 남자","M.C THE MAX - 어디에도","나윤권 - 멍청이","여자친구 - 너 그리고 나","처진달팽이 - 말하는대로"];
+	var correct = ["Adam Lambert" , "Apink" , "EXID" , "IU" , "IU", "MC THE MAX" , "나윤권" , "여자친구" , "처진달팽이"];
+	
+	function correct(){
+		alert("클릭");
+		audio.pause();
+	
+	} 
+	function musicStart(){
+		index = Math.floor(Math.random()* music.length);
+		audio = new Audio("C:\\DEV\\workspace\\DAYS0728\\mp3\\"+music[index]+".mp3");
+		audio.play();
+		
+	}
+</script>
+<script>
+
+
+</script>
+

@@ -1,0 +1,43 @@
+<script type ="text/javascript"
+src="http:\\code.jquery.com/jquery.js">
+</script>
+
+<script>
+$(document).ready(function(){
+	
+	txt.value ='test~~~';
+	
+	$("#txt").val("test^^!!");
+	$("#msg").css("color" , "red");
+	//#을 붙이고 id값을 적으면 해당 id를 가진 대상만 처리한다.
+	$("div").css("color","blue");
+	//아무것도 붙이지 않고 태그를 선택하면 해당하는 모든 태그를 처리한다.
+	$(".test").css("color", "green");
+	//.test의 경우 class가 test인 모든 것들을 선택한것이다.
+	$("div.test").css("color", "green");
+	//이렇게 할경우 div중에서 test클래스에 해당하는 놈들만 선택해서 처리한다.
+	// 이런것들은 대부분 비동기식으로 되어 있는 경우가 많다 즉 쓰레드로 자동으로 돌아가야지 안그러면 웹이 죽을 수 있다.
+	$("#msg").click(
+			function(){
+				alert("^^^^^^");
+			}
+	); // 함수 이름이 필요가 없다는 장점이 있따. 
+	$("#btn").click(function() {
+		$("#btn2").toggle('slow', function() {
+			$("#msg").html("<img width=200 height=300 src=C:\\DEV\\workspace\\DAYS0728\\IMAGE\\cat.jpg>");
+		})
+	});
+});
+function test(){
+	alert("^^^^^^");
+}
+
+</script>
+
+<div id=msg>hello</div>
+<div id=msg2>hello2</div>
+<div class=test>hello3</div>
+<div class=test>hello4</div>
+<button id=btn>HideAndShow</button>
+<button id=btn2>ThisButton</button>
+<input type=text id=txt>
