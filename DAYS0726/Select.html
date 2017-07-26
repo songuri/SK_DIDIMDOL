@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+
+<div>-----장바구니-----</div>
+<div class ='item' sel=0>사과	100		30</div>
+<div class ='item' sel=0>바나나	500		2</div>
+<div class ='item' sel=0>복숭아	400		5</div>
+
+
+<button id=calc>계산하기</button>
+
+<script>
+	/* $("div.item").click(function() {
+		
+		sel = $(this).attr("sel");
+		if(sel == 0){
+			$(this).attr("sel","1");
+			$(this).css("color" , "red");
+		}else{
+			$(this).attr("sel","0");
+			$(this).css("color" , "black");
+		}
+		
+	});
+	$("#calc").click(function() {
+		$(".item[sel=1]").css("background-color","yellow");
+		//sel 이 1인것들만 고를려면 이렇게 넣으면 된다.
+	}); */
+	// 구글에 내가 필요한 어떠한 형식의 regex를 찾아서 쓰면된다 쓸때 없이 뭐 내가 코딩할 필요 없다.
+	
+/* 	var s = "사과  100  7";
+	var token = s.split(/\s+/);
+	console.log(token[0]);
+	console.log(token[1]);
+	console.log(token[2]); */
+	
+	$("div.item").each(function(i, element) {
+		var s = $(element).text();
+		var token = s.split(/\s+/);
+		if(token[1] * token[2] >= 3000)
+			$(element).css("color" , "red");
+	/* 	console.log($(element).text());
+		if(i%2 == 0)
+		$(element).css("color" , "red"); */
+	});
+</script>

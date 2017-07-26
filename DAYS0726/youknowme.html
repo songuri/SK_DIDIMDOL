@@ -1,0 +1,116 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script>
+	alert("OK!!");
+</script>
+<script>
+	var index = 0;
+	var idxs = ["0","1","2","3","4","5","6"];	
+	var imgs = ["suji.jpg" , "hippo.jpg" , "spiderman.jpg" ,"IU.jpg","ironman.jpg","choa.jpg" ,"sohee.jpg"];
+	var imgs_correct = ["수지" , "하마" , "스파이더맨" ,"아이유","아이언맨", "초아","소희"];
+	var SetTime = 300;		// 최초 설정 시간(기본 : 초)
+	var Oscore = 0;
+	var Xscore = 0;
+	</script>
+<script>
+	function shuffle(a){
+		var j,x,i;
+		for(i =  a.length ; i ; i--){
+			j = Math.floor(Math.random() * i);
+			x = a[i-1];
+			a[i-1] = a[j];
+			a[j] =x;
+		}
+	}  // 셔플함수 ㅇ.ㅇ 
+	
+	function clearText(field)
+	{
+	  if(field.defaultValue==field.value)
+	   field.value="";
+	}
+</script>
+
+
+
+
+<div id="ViewTimer"></div>
+
+<table border="1">
+   <tr>
+      <th>그림</th>
+      <th>정답/오답</th>
+      <th>점수</th>
+   </tr>
+   <tr>
+      <td rowspan ="2"><img src="" width=200 height=300 id=myImg> </td>
+      <td><img src="" width=100 height=100 id=oh></td>
+      <td id=Otable>정답</td>
+   </tr>
+   <tr>
+      <td><img src="" width=100 height=100 id=ex></td>
+      <td id=Xtable>오답</td>
+   </tr>
+</table>
+
+
+
+
+
+
+
+<!-- onclick은 모든곳에 다 쓰일 수 있다. -->
+<!-- 정의 하는 부분과 호출하는 부분을 아에 분리하는 것이 좋다. -->
+<!-- name , id 속성을 통하여 이런 것에 이름이나 번호를 부여해서 사용 할 수 있다. -->
+<br>
+<input type = text id=answer value ="정답을 입력하세요." onFocus="clearText(this)"/>
+<button id=btn>next</button>
+<div id=msg>message</div>
+
+<script>
+	shuffle(idxs);
+	//document.getElementById("myImg").src = "C:\\DEV\\workspace\\DAYS0728\\IMAGE\\"+imgs[idxs[index]];
+	$("#myImg").attr("src", "C:\\DEV\\workspace\\DAYS0728\\IMAGE\\"+imgs[idxs[index]]);
+	$("#btn").click(function() {
+			console.log(index);
+			if($("#answer").val() == imgs_correct[idxs[index++]]){
+				$("#Otable").text(++Oscore);
+				msg.innerHTML = "<font color=blue>good~~~</font>";
+			}else{	
+				$("#Xtable").text(++Xscore);
+				 msg.innerHTML = "<font color=red>bad~~~</font>";
+			 }
+			 if(index == idxs.length){
+				 Oscore =0;
+				 Xscore =0
+				 $("#Otable").text(Oscore);
+				 $("#Xtable").text(Xscore);
+				 index = 0;
+				 shuffle(idxs);
+				 alert("Complete");
+			 }  
+			answer.value = "";
+			answer.focus();
+			$("#myImg").attr("src","C:\\DEV\\workspace\\DAYS0728\\IMAGE\\"+imgs[idxs[index]]);	  
+	});
+	function msg_time() {	// 1초씩 카운트
+		m = Math.floor(SetTime / 60) + "분 " + (SetTime % 60) + "초";	// 남은 시간 계산
+		var msg = "현재 남은 시간은 <font color='red'>" + m + "</font> 입니다.";
+		document.all.ViewTimer.innerHTML = msg;		// div 영역에 보여줌 	
+		SetTime--;					// 1초씩 감
+		if (SetTime < 0) {			// 시간이 종료 되었으면..	
+			clearInterval(tid);		// 타이머 해제
+			alert("종료");
+		}	
+	}
+	window.onload = function TimerStart(){ tid=setInterval('msg_time()',1000) };
+	
+	
+	$("#oh").attr("src", "C:\\DEV\\workspace\\DAYS0728\\IMAGE\\o.jpg");
+	$("#ex").attr("src", "C:\\DEV\\workspace\\DAYS0728\\IMAGE\\x.jpg");
+	$("#Otable").text(Oscore);
+	$("#Xtable").text(Oscore);
+	
+	
+	
+	
+	
+</script>

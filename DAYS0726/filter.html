@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+
+<div>-----장바구니-----</div>
+<div class ='item' sel=0>사과	100		30</div>
+<div class ='item' sel=0>바나나	500		2</div>
+<div class ='item' sel=0>복숭아	400		5</div>
+
+
+
+<script>
+
+	/* var a = $("div.item").filter(function(index){
+		return index == 0;
+	});
+	
+	a.css("color" , "red"); */
+/* 	
+	//방법1
+	$("div.item").css("color", "red").cess("background", "yellow").hide(5000);
+	//방법2
+	$("div.item").css("color" , "red");
+	$("div.item").css("background", yellow);
+	$("div.item").hide(5000);
+	 */
+	//방법 2는 계속 객채를 불러와야 하기 때문에 속도가 더 느리다.
+	//방법1은 한번객체를 불러놓고 계속해서 chainrule 적으로 호출하기 때문에 더 좋다.
+	
+	//방법3
+	var a = $("div.item").filter(function(index){
+		return index == 0;
+	}).css("color", "red").cess("background", "yellow").hide(5000);
+	
+	//결과적으로는 이렇게 사용하는 가장 좋은 방법이다.	
+</script>

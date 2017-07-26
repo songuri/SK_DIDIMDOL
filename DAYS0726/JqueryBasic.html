@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+
+<script>
+
+$(document).ready(function(){
+	alert('11111');
+	$('input[data=hello]').val('hello!');
+	$('input[data*=hello]').val('hello2!');
+	$('input[data~=hello]').val('hello3!');
+})  // 모든 초기화가 끝난 다음에 하는 거라서 ....음음.... 필수적으로 있을 필요는 없는 것이다.
+</script>
+
+<p id=msg> hello </p>
+	<input type=text data="hello" />
+	<input type=text data="hello123" />
+	<input type=text data="12345 hello 1254635" />
+
+<select>
+	<option>Apple</option>
+	
+</select>
+
+<script>
+	$("p").addClass("s1");
+	$("#msg").text("안녕하세요").
+</script>
