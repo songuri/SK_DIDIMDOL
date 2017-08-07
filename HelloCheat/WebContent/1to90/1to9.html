@@ -1,0 +1,140 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src=" http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<!-- 
+
+	function Person(name , age){
+		this.name = name;
+		this.age = age;
+	}
+	var p = new Person("이순신",50);
+	var p2 = new Person("홍길동",30);
+	이런식으로 객체를 지정해서 인스턴스를 생성후 사용할 수 있다.
+
+	function Person(name , age){
+		this.name = name;
+		this.age = age;
+		this.add = function(a,b) {return a+b);
+		return this;
+	}
+	
+	var p = Person("이순신",50);
+	var p2 = Person("홍길동",30);
+ -->
+
+<script>
+	var correct = -1 ; 
+	var data = [1,2,3,4,5,6,7,8,9];
+	function shuffle(a){
+		var j,x,i;
+		for(i =  a.length ; i ; i--){
+			j = Math.floor(Math.random() * i);
+			x = a[i-1];
+			a[i-1] = a[j];
+			a[j] =x;
+		}
+	}  // 셔플함수 ㅇ.ㅇ 
+	
+	function plus(a){
+		for(var i = 0 ; i < a.length ; i++)
+			a[i]= a[i] + 9;
+	}
+	function minus(a){
+		for(var i = 0 ; i < a.length ; i++)
+			a[i]= a[i] - 9;
+	}
+</script>
+
+<style>
+	.btn{
+		width:50px;height:50px;
+	} 
+</style>
+<!-- .을 찍어서 클래스를 지정해버리는 것임 ㅇ.ㅇ  -->
+
+<span id="time_out">0.00</span>
+<br />
+<br />
+
+<table id = 1To25Table>
+	<tr>
+		<td>	<button class =btn>1</button> </td>
+		<td>	<button class =btn>2</button> </td>
+		<td>	<button class =btn>3</button> </td>
+	
+	</tr>
+	<tr>
+		<td>	<button class =btn>4</button> </td>
+		<td>	<button class =btn>5</button> </td>
+		<td>	<button class =btn>6</button> </td>
+	</tr>
+	<tr>
+		<td>	<button class =btn>7</button> </td>
+		<td>	<button class =btn>8</button> </td>
+		<td>	<button class =btn>9</button> </td>
+	</tr>
+</table>
+
+<button id="start_timer" onclick="start()" flag =1>Start</button>
+<button id="reset_timer" onclick="reset()" flag =1>Reset</button>
+<div id=msg></div>
+
+<script>
+	$("button.btn").click(function() {
+		var input = $(this).html();
+		if(correct == -1) alert("시작 버튼을 눌러 주세요.");
+		
+		if(input == correct){
+			if(input>9) $(this).text("");
+			$(this).fadeOut(100, function(){
+				$(this).text(data[correct-1]);
+				correct++;
+				if(correct  > 18) {
+					reset();
+					alert("게임끝" +$("#time_out").html() );
+				}
+			}); //동기 비동기의 문제가 생긴다. 이런식으로 바꾸면 페이드 아웃이 된 후에 뒤에 함수를 실행 시키게 된다.
+			$(this).fadeIn(100);
+		}
+	
+		console.log(correct);
+	});
+</script>
+<script>
+		var timer,
+		i = 0,
+		divide = 100;
+		
+		function start(){
+		correct = 1;
+		timer = self.setInterval('increment()', (1000 / divide));
+		shuffle(data);
+		$("button.btn").each(function(idx,obj){
+			$(obj).text(data[idx]);
+		});  //각각의 객체에 대해서 정리를 하는 방법 이렇게 하면 개편함 ㅇ,ㅇ 	
+		
+		plus(data);
+		shuffle(data);
+		}
+		
+		function increment(){
+		// ( i / divide )??
+		i++;
+		document.getElementById('time_out').innerHTML = (i / divide);
+		}
+		function stop(){
+			 // clearInterval : setInterval을 멈출 때 사용
+			 // timer = null을 준 이유는?
+			 clearInterval(timer);
+			 timer = null;
+			}
+		
+		function reset(){
+		stop();
+		i = 0
+		//document.getElementById('time_out').innerHTML = (i / divide);
+		minus(data)
+		}
+</script>
+
+
+
